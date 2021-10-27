@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- google fonts "Zen Kaku Gothic Antique" -->
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300&display=swap"
+        rel="stylesheet" />
+
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>To-do</title>
+</head>
+
+<body>
+    <div class="to-do">
+        <h1>To-do</h1>
+        <!-- add task input -->
+        <form class="add-task">
+            <input type="text" title="New task" class="add-task-input" />
+            <button title="Add task" class="add-task-btn" >
+                <i class="fas fa-plus-square"></i>
+            </button>
+        </form>
+
+        <div class="error-message"></div>
+
+        <!-- to-do list -->
+        <div class="to-do-container">
+            <ul class="to-do-list"></ul>
+        </div>
+        <button title="Remove completed" class="delete-completed-btn">
+            <i class="fas fa-dumpster"></i>
+        </button>
+    </div>
+    <script src="todo.js"></script>
+</body>
+
+</html>

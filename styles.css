@@ -1,0 +1,126 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-size: 30px;
+    background: rgb(112,112,214);
+    background: linear-gradient(to top left, rgba(112,112,214,1) 0%, rgba(237,176,255,1) 100%) fixed;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px rgb(167, 110, 64);
+}
+
+.to-do {
+    background-color: wheat;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top:5%;
+    padding: 10px;
+    box-shadow: 2px 2px rgb(167, 110, 64);
+}
+
+form {
+    width: 50%;
+    padding: 0;
+    display: flex;
+    box-shadow: 1px 1px burlywood;
+}
+
+form input, form button{
+    font-size: 0.8em;
+    padding: 5px;
+    border: none;
+    background: cornsilk;
+    transition-duration: 0.5s;
+}
+
+form input {
+    transition-duration: 1s;
+    overflow: hidden;
+}
+
+.error-message {
+    width: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    color: orangered;
+    visibility: hidden;
+    border: orangered 3px solid;
+}
+
+.to-do-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.to-do-list {
+    list-style: none;
+    margin: 5px;
+    width: 100%
+}
+
+.task {
+    font-size: 0.8em;
+    margin: 5px;
+    border: none;
+    box-shadow: 1px 1px burlywood;
+    background: cornsilk;
+    display:flex;
+    justify-content: space-between;
+    transition-duration: 0.25s;
+}
+
+.task li {
+    flex: 1;
+}
+
+.task-delete-btn, .task-complete-btn {
+    font-size: 0.8em;
+    padding: 5px;
+    border: none;
+    background: cornsilk;
+    transition-duration: 0.5s;
+}
+
+.delete-completed-btn {
+    font-size: 0.8em;
+    padding: 5px;
+    border: none;
+    box-shadow: 1px 1px burlywood;
+    background: cornsilk;
+    transition-duration: 0.5s;
+}
+
+.error {
+    background-color:orangered;
+    color: orangered;
+    
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.75;
+}
+
+.removing {
+    transform: translateX(-100px);
+    opacity: 0;
+}
+
+.fa-check, .fa-trash {
+    pointer-events: none;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: white;
+}
