@@ -12,3 +12,5 @@ A simple to-do list. A school project.
 * Refactor task status to another list
 * Alternatively overhaul the whole system for better expandability
 * Filtering
+
+Online version: https://kind-franklin-2f1eb5.netlify.app/
