@@ -5,7 +5,8 @@ const todoAddButton = document.querySelector(".add-task-btn");
 const todoList = document.querySelector(".to-do-list");
 const todoDeleteAllButton = document.querySelector(".delete-completed-btn");
 const errorMessage = document.querySelector(".error-message");
-const listLocalStorage = "storedList";
+const storedNameList = "storedNameList";
+const storedStatusList = "storedStatusList";
 
 //LISTENERS
 document.addEventListener("DOMContentLoaded", createTodoListFromLocalStorage);
@@ -95,13 +96,12 @@ function deleteTask(task) {
 function completeTask(task) {
     //task.classList.toggle("completed");
 
-    const storedList = getLocalStorageTable(listLocalStorage); //fetch the LocalStorage table
+    const statusList = getLocalStorageTable(storedStatusList); //fetch the LocalStorage table
     let index = indexOfObject(todoList.children, task); //find the index of the task in the to-do list
 
-    //change the task status
+    //change the task status in-browser
     let status;
     if (!task.classList.contains("completed")) {
-        task.classList.add("completed");
         status = "completed";
     } else {
         task.classList.remove("completed");
@@ -109,9 +109,8 @@ function completeTask(task) {
     }
     task.classList.add(status);
 
-    //change the status 
-    storedList[index * 2 + 1] = status; //take into account the status as every other cell. Yes it's janky.
-    localStorage.setItem(listLocalStorage, JSON.stringify(storedList));
+    statusList[index] = status; //change the status in LocalStorage
+    localStorage.setItem(storedStatusList, JSON.stringify(statusList));
 }
 
 //delete all completed tasks
@@ -155,25 +154,37 @@ function inputError() {
 
 //add a task to the end of the table and store it in LocalStorage
 function saveToLocalStorage(task, status) {
-    const storedList = getLocalStorageTable(listLocalStorage);
-    storedList.push(task);
-    storedList.push(status);
-    localStorage.setItem(listLocalStorage, JSON.stringify(storedList));
+    const nameList = getLocalStorageTable(storedNameList);
+    const statusList = getLocalStorageTable(storedStatusList);
+
+    nameList.push(task);
+    statusList.push(status);
+
+    localStorage.setItem(storedNameList, JSON.stringify(nameList));
+    localStorage.setItem(storedStatusList, JSON.stringify(statusList));
 }
 
 //delete a task and its status from LocalStorage
 function deleteFromLocalStorage(task) {
-    const storedList = getLocalStorageTable(listLocalStorage);
-    let index = indexOfObject(todoList.children, task);
-    storedList.splice(index * 2, 2); //again taking the status into account. Still janky.
-    localStorage.setItem(listLocalStorage, JSON.stringify(storedList));
+    const nameList = getLocalStorageTable(storedNameList);
+    const statusList = getLocalStorageTable(storedStatusList);
+    const index = indexOfObject(todoList.children, task);
+
+    nameList.splice(index, 1);
+    statusList.splice(index, 1);
+
+    localStorage.setItem(storedNameList, JSON.stringify(nameList));
+    localStorage.setItem(storedStatusList, JSON.stringify(statusList));
 }
 
-//copy over the LocalStorage data to DOM
+//copy over the LocalStorage data to browser
 function createTodoListFromLocalStorage() {
-    const storedList = getLocalStorageTable(listLocalStorage);
-    for (let i = 0; i < storedList.length; i += 2) {
-        const newTask = createNewTaskElement(storedList[i], storedList[i + 1]);
+    const nameList = getLocalStorageTable(storedNameList);
+    const statusList = getLocalStorageTable(storedStatusList);
+
+    //loop over the LocalStorage name list. Status list shares the same indexes.
+    for (let i = 0; i < nameList.length; i++) {
+        const newTask = createNewTaskElement(nameList[i], statusList[i]);
         todoList.appendChild(newTask);
     }
 }
