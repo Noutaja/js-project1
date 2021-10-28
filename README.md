@@ -1,7 +1,7 @@
 # js-project1
  
 A simple to-do list. A school project.
-![To-do list screenshot]("/documentation images/to-do.png")
+![To-do list screenshot](/images/to-do.png)
 
 ## Features
 * Add and remove tasks
