@@ -9,7 +9,7 @@ A simple to-do list. A school project.
 * Tasks saved between sessions
 
 ## To-do
-* Refactor task status to another list
+* ~~Refactor task status to another list~~
 * Alternatively overhaul the whole system for better expandability
 * Filtering
 
